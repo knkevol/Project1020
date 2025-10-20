@@ -2,6 +2,7 @@
 
 AMonster::AMonster()
 {
+	ZOrder = 2;
 }
 
 AMonster::~AMonster()

@@ -1,17 +1,35 @@
 #include "Player.h"
+#include "Engine.h"
 
 APlayer::APlayer()
 {
-	cout << "APlayer 持失切" << "\n";
+	ZOrder = 3;
 }
 
 APlayer::~APlayer()
 {
-	cout << "APlayer 社瑚切" << "\n";
+	//cout << "APlayer 社瑚切" << "\n";
 }
 
 void APlayer::Tick()
 {
-	AActor::Tick();
-	cout << "APlayer Tick" << "\n";
+	// Move
+	int KeyCode = GEngine->GetKeyCode();
+
+	if (KeyCode == 'w')
+	{
+		Location.Y--;
+	}
+	else if (KeyCode == 'a')
+	{
+		Location.X--;
+	}
+	else if (KeyCode == 's')
+	{
+		Location.Y++;
+	}
+	else if (KeyCode == 'd')
+	{
+		Location.X++;
+	}
 }

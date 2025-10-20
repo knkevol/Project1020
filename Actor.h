@@ -12,6 +12,7 @@ public:
 	virtual ~AActor();
 
 	virtual void Tick();
+	virtual void Render();
 
 	__forceinline FVector2D GetActorLocation() const { return Location; }
 	void SetActorLocation(FVector2D Value)
@@ -21,6 +22,16 @@ public:
 		Location.Y = Value.Y;
 	}
 
-private:
+	__forceinline char GetShape() { return Shape; }
+	void SetShape(char Value)
+	{
+		Shape = Value;
+	}
+
+	__forceinline char GetZOrder() const { return ZOrder; }
+
+protected:
 	FVector2D Location;
+	char Shape;
+	int ZOrder;
 };

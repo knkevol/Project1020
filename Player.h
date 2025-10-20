@@ -10,8 +10,4 @@ public:
 
 	void Tick() override;
 
-	//overloading
-	void Jump();
-	void Jump(int a);
-	void Jump(float a);
 };

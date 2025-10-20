@@ -12,6 +12,9 @@ public:
 	std::vector<AActor*> GetAllActors() const;
 	AActor* SpawnActor(AActor* NewActor);
 
+	virtual void Tick();
+	virtual void Render();
+
 protected:
 	std::vector<AActor*> Actors;
 };
