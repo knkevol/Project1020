@@ -1,20 +1,14 @@
-#include <iostream>
-#include "Actor.h"
-#include "Player.h"
-
-#include <vector>
+#include "Engine.h"
 
 int main()
 {
-	vector<AActor*> Actors;
-	Actors.push_back(new AActor());
+	FEngine* MyEngine = new FEngine();
+	MyEngine->Init();
+	MyEngine->Run();
+	MyEngine->Term();
 
-
-	AActor* MyActor = new APlayer;
-
-	MyActor->Tick();
-
-	delete MyActor;
+	delete MyEngine;
+	MyEngine = nullptr;
 
 	return 0;
 }

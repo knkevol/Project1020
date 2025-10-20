@@ -9,10 +9,12 @@ public:
 	void Run();
 	void Term();
 
-private:
+protected:
 	void Input();
-	void Tick(); // Process
+	void Tick(); // =Process
 	void Render();
+
+	bool bIsRunning = true;
 
 };
 
