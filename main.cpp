@@ -23,7 +23,7 @@ int main()
 		while (getline(file, line)) {
 			cout << line << endl;
 		}
-		file.close(); // 열었떤 파일을 닫는다. 
+		file.close();
 	}
 	else {
 		cout << "Unable to open file";
