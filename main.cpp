@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -15,17 +16,16 @@ int main()
 	//delete MyEngine;
 	//MyEngine = nullptr;
 
-
-	string line;
-	ifstream file("Level101.map");
-	if (file.is_open()) 
+	string Buffer;
+	ifstream MapFile("Level101.map");
+	if (MapFile.is_open())
 	{
-		
-		while (getline(file, line)) 
+		while (getline(MapFile, Buffer))
 		{
-			cout << line << endl;
+			cout << Buffer << endl;
+			
 		}
-		file.close();
+		MapFile.close();
 	}
 	else 
 	{
