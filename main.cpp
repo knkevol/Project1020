@@ -18,15 +18,18 @@ int main()
 
 	string line;
 	ifstream file("Level101.map");
-	if (file.is_open()) {
-		while (getline(file, line)) {
+	if (file.is_open()) 
+	{
+		
+		while (getline(file, line)) 
+		{
 			cout << line << endl;
 		}
 		file.close();
 	}
-	else {
-		cout << "Unable to open file";
-		return 1;
+	else 
+	{
+		cout << "Error";
 	}
 
 	return 0;
