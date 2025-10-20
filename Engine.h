@@ -5,9 +5,9 @@ public:
 	FEngine();
 	virtual ~FEngine();
 
-	void Init();
-	void Run();
-	void Term();
+	virtual void Init();
+	virtual void Run();
+	virtual void Term();
 
 protected:
 	void Input();
