@@ -2,6 +2,8 @@
 
 class UWorld;
 
+using namespace std;
+
 class FEngine
 {
 protected: //Singleton

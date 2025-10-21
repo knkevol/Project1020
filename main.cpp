@@ -1,14 +1,20 @@
 #include "Engine.h"
-using namespace std;
+#include <iostream>
+
+#include "DynamicArray.h"
+#include "Vector.h"
+
 
 
 int main()
 {
-	GEngine->Init();
-	GEngine->Run();
-	GEngine->Term();
+	//GEngine->Init();
+	//GEngine->Run();
+	//GEngine->Term();
 
-	delete GEngine;
+	//delete GEngine;
+
+	
 
 	return 0;
 }

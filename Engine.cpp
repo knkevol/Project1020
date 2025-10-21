@@ -16,7 +16,7 @@
 
 FEngine* FEngine::Instance = nullptr;
 
-using namespace std;
+
 
 FEngine::FEngine()
 {
@@ -79,11 +79,12 @@ void FEngine::Init()
 			Y++;
 		}
 		
-		vector<AActor*> ActorsList = World->GetAllActors();
-		sort(ActorsList.begin(), ActorsList.end(), [](const AActor* A, const AActor* B)
-			{ return A->GetZOrder() < B->GetZOrder(); });
-		MapFile.close();
+		//vector<AActor*> ActorsList = World->GetAllActors();
+		//sort(ActorsList.begin(), ActorsList.end(), [](const AActor* A, const AActor* B)
+		//	{ return A->GetZOrder() < B->GetZOrder(); });
 	}
+	MapFile.close();
+	World->SortActor();
 }
 
 void FEngine::Run()
