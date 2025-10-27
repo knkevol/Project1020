@@ -27,6 +27,19 @@ public:
 		}
 	}
 
+	//대입연산자
+	TDynamicArray<T>& operator=(const TDynamicArray<T>& RHS)
+	{
+		this->Size = RHS.Size;
+		this->Capacity = RHS.Capacity;
+		this->CurIdx = RHS.CurIdx;
+
+		this->Data = new T[Capacity];
+		memcpy(this->Data, RHS.Data, Size * sizeof(T));
+
+		return *this;
+	}
+
 protected:
 	T* Data = nullptr; // real data size
 	size_t Size = 0; // use space

@@ -46,27 +46,22 @@ int SDL_main(int argc, char* argv[])
 		else //screen update
 		{
 			//command queue >> to gpu
-			//int RandColor = rand() % 256;
 			SDL_SetRenderDrawColor(MyRenderer, 255, 255, 255, 0);
-			//SDL_SetRenderDrawColor(MyRenderer, 10, 50, 50, 255);
 			SDL_RenderClear(MyRenderer);
 
-
 			
-			for (int i = 0; i < 100; i++ )
+			SDL_SetRenderDrawColor(MyRenderer, 0, 0, 255, 0);
+			for (float i = 0; i < 360; i += 0.1f)
 			{
-				SDL_SetRenderDrawColor(MyRenderer, SDL_rand(255), SDL_rand(255), SDL_rand(255), 0);
+				int X = SDL_cos(i) * 100 + 320;
+				int Y = SDL_sin(i) * 100 + 240;
 
-				SDL_FRect MyRect = { SDL_rand(640), SDL_rand(480), SDL_rand(200) + 1, SDL_rand(200) + 1 };
-				SDL_RenderFillRect(MyRenderer, &MyRect);
-				SDL_RenderDrawRect(MyRenderer, &MyRect);
 				
+
+				
+				SDL_RenderPoint(MyRenderer, X, Y);
 			}
 			
-			
-			
-			
-
 			
 			SDL_RenderPresent(MyRenderer);
 
