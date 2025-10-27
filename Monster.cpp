@@ -18,19 +18,19 @@ AMonster::~AMonster()
 void AMonster::Tick()
 {
 	int MonsterPosition = rand() % 4;
-	srand((unsigned int)time(nullptr));
 	FVector2D SaveLocation(Location); //PreLocation
+	
 
 	switch (MonsterPosition)
 	{
 	case 0:
-		Location.Y--;
-	case 1:
 		Location.Y++;
-	case 2:
-		Location.X--;
-	case 3:
+	case 1:
 		Location.X++;
+	case 2:
+		Location.Y--;
+	case 3:
+		Location.X--;
 	}
 
 	vector<AActor*> AllActors;
