@@ -8,6 +8,6 @@ public:
 	APlayer();
 	virtual ~APlayer();
 
-	void Tick() override;
+	virtual void Tick() override;
 
 };

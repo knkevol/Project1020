@@ -36,6 +36,11 @@ void AActor::Render()
 
 bool AActor::CheckCollision(const AActor* Other)
 {
+	if (Other->bIsOverlap)
+	{
+		return false;
+	}
+	
 	//Only Collision Check
 	if ((Other->bIsCollision) && bIsCollision && (this->Location == Other->Location))
 	{

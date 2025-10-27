@@ -13,6 +13,7 @@
 #include "Monster.h"
 #include "Goal.h"
 #include "Floor.h"
+#include "GameMode.h"
 
 FEngine* FEngine::Instance = nullptr;
 
@@ -28,6 +29,9 @@ FEngine::~FEngine()
 
 void FEngine::Init()
 {
+
+	srand((unsigned int)time(nullptr));
+
 	World = new UWorld;
 
 	ifstream MapFile("Level101.map");
@@ -85,6 +89,9 @@ void FEngine::Init()
 	}
 	MapFile.close();
 	World->SortActor();
+
+	//UE Gameplay Framwork
+	World->SpawnActor(new AGameMode());
 }
 
 void FEngine::Run()
