@@ -46,6 +46,8 @@ bool AActor::CheckCollision(const AActor* Other)
 	{
 		return true;
 	}
+
+	return false;
 }
 
 void AActor::ActorBeginOverlap()
