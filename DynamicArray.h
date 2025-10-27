@@ -7,7 +7,18 @@ template<typename T>
 class TDynamicArray //Template (TArray) 언리얼식벡터
 {
 public:
+	//basic constructor
 	TDynamicArray() {}
+	//copy constructor
+	TDynamicArray(const TDynamicArray<T>& RHS)
+	{
+		this->Size = RHS.Size;
+		this->Capacity = RHS.Capacity;
+		this->CurIdx = RHS.CurIdx;
+
+		this->Data = new T[Capacity];
+		memcpy(this->Data, RHS.Data, Size * sizeof(T));
+	}
 	virtual ~TDynamicArray() 
 	{
 		if (Data)
@@ -17,9 +28,9 @@ public:
 	}
 
 protected:
-	T* Data = nullptr; // 실제 사용하는 데이터의 크기
-	size_t Size = 0;
-	size_t Capacity = 0; // 사용하지 않는 공간. 자료의 크기
+	T* Data = nullptr; // real data size
+	size_t Size = 0; // use space
+	size_t Capacity = 0; // not use space
 	size_t CurIdx = 0;
 
 public:
@@ -35,10 +46,8 @@ public:
 
 	T& operator[](size_t _Idx)
 	{
-		return Data[_Idx]; //복사하지말고 위치값을 줘야 메모리성능
+		return Data[_Idx]; //deliver position = high memory performance
 	}
-
-
 
 	void PushBack(T Value)
 	{

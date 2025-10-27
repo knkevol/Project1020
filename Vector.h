@@ -3,6 +3,12 @@
 struct FVector2D
 {
 public:
+	//복사생성자
+	FVector2D(const FVector2D& RHS)
+	{
+		this->X = RHS.X;
+		this->Y = RHS.Y;
+	}
 	FVector2D(int InX = 0, int InY = 0) : X(InX), Y(InY)
 	{
 

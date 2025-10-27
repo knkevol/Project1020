@@ -3,8 +3,8 @@
 
 #include "DynamicArray.h"
 #include "Vector.h"
-
-
+#include <list>
+#include <vector>
 
 int main()
 {
@@ -13,6 +13,7 @@ int main()
 	//GEngine->Term();
 
 	//delete GEngine;
+
 
 	
 
