@@ -15,6 +15,8 @@ public:
 	virtual void Tick();
 	virtual void Render();
 
+	virtual void SetSimulatePhysics();
+
 	void SortActor();
 
 protected:

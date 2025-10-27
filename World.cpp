@@ -27,6 +27,7 @@ void UWorld::Tick()
 {
 	for (auto Actor : Actors)
 	{
+		//It is determined at runtime and the error is unknown, but this is where the problem arises.
 		Actor->Tick();
 	}
 }
@@ -38,6 +39,10 @@ void UWorld::Render()
 	{
 		Actor->Render();
 	}
+}
+
+void UWorld::SetSimulatePhysics()
+{
 }
 
 void UWorld::SortActor()

@@ -30,8 +30,17 @@ public:
 
 	__forceinline char GetZOrder() const { return ZOrder; }
 
+	//Implement same as UE
+	virtual bool CheckCollision(const AActor* Other);
+	//virtual void SetSimulatePhysics();
+	virtual void ActorBeginOverlap();
+	virtual void Hit();
+
 protected:
 	FVector2D Location;
 	char Shape;
 	int ZOrder;
+public:
+	bool bIsCollision = false;
+	bool bIsOverlap = true;
 };

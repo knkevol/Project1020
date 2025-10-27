@@ -23,9 +23,30 @@ void AActor::Tick()
 void AActor::Render()
 {
 	COORD Position;
+	
+	
+
 	Position.X = Location.X;
 	Position.Y = Location.Y;
+
 	SetConsoleCursorPosition((HANDLE)GetStdHandle(STD_OUTPUT_HANDLE), Position);
 
 	cout << Shape;
+}
+
+bool AActor::CheckCollision(const AActor* Other)
+{
+	//Only Collision Check
+	if ((Other->bIsCollision) && bIsCollision && (this->Location == Other->Location))
+	{
+		return true;
+	}
+}
+
+void AActor::ActorBeginOverlap()
+{
+}
+
+void AActor::Hit()
+{
 }

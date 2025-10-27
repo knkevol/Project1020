@@ -8,11 +8,11 @@
 
 int main()
 {
-	//GEngine->Init();
-	//GEngine->Run();
-	//GEngine->Term();
+	GEngine->Init();
+	GEngine->Run();
+	GEngine->Term();
 
-	//delete GEngine;
+	delete GEngine;
 
 
 	
