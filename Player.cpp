@@ -3,18 +3,22 @@
 #include "World.h"
 #include "SDL3/SDL.h"
 #include "PaperFlipbookComponent.h"
+#include "CollisionComponent.h"
 
 APlayer::APlayer()
 {
-	bIsCollision = true;
-	bIsOverlap = true;
+	Flipbook = new UPaperFlipbookComponent();
+	Flipbook->SetShape('P');
+	Flipbook->SetOwner(this);
+	Flipbook->ZOrder = 3;
+	Flipbook->Color = SDL_Color{ 255, 0, 0, 255 };
+	SetupAttachment(Flipbook);
 
-	UPaperFlipbookComponent* Paper = new UPaperFlipbookComponent();
-	Paper->SetShape('P');
-	Paper->SetOwner(this);
-	Paper->ZOrder = 3;
-	Paper->Color = SDL_Color{ 255, 0, 0, 255 };
-	AddComponent(Paper);
+	Collision = new UCollisionComponent();
+	Collision->SetOwner(this);
+	Collision->bIsCollision = true;
+	Collision->bIsOverlap = true;
+	SetupAttachment(Collision);
 }
 
 APlayer::~APlayer()
@@ -56,12 +60,20 @@ void APlayer::Tick()
 	GEngine->GetWorld()->GetAllActors(AllActors);
 
 	bool bFlag = false;
+	//Other CollisionComp Search
 	for (auto OtherActor : AllActors)
 	{
-		if (CheckCollision(OtherActor))
+		for (auto Component : OtherActor->Components)
 		{
-			bFlag = true;
-			break;
+			UCollisionComponent* OtherCollision = dynamic_cast<UCollisionComponent*>(Component);
+			if (OtherCollision)
+			{
+				if (Collision->CheckCollision(OtherCollision))
+				{
+					bFlag = true;
+					break;
+				}
+			}
 		}
 	}
 

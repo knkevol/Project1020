@@ -2,6 +2,9 @@
 
 #include "Actor.h"
 
+class UCollisionComponent;
+class UPaperFlipbookComponent;
+
 class APlayer : public AActor
 {
 public:
@@ -9,5 +12,8 @@ public:
 	virtual ~APlayer();
 
 	virtual void Tick() override;
+
+	UCollisionComponent* Collision; //MyCollisionComp Search ¾ÈÇØµµµÊ
+	UPaperFlipbookComponent* Flipbook;
 
 };

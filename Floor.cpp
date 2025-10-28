@@ -8,7 +8,7 @@ AFloor::AFloor()
 	Paper->SetOwner(this);
 	Paper->ZOrder = 0;
 	Paper->Color = SDL_Color{ 0, 0, 0, 0 };
-	AddComponent(Paper);
+	SetupAttachment(Paper);
 	
 }
 

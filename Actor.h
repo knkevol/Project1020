@@ -22,23 +22,18 @@ public:
 		Location.Y = Value.Y;
 	}
 
+	//GetComponent()
 	
-
-	//Implement same as UE
-	bool CheckCollision(const AActor* Other);
 	//virtual void SetSimulatePhysics();
 	virtual void ActorBeginOverlap();
 	virtual void Hit();
 
-	void AddComponent(UComponent* InComponent);
+	void SetupAttachment(UComponent* InComponent);
 	vector<class UComponent*> Components;
 
 protected:
 	FVector2D Location;
-	
-public:
-	bool bIsCollision = false;
-	bool bIsOverlap = true;
 
+public:
 	
 };
