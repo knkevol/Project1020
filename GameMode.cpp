@@ -52,7 +52,7 @@ void AGameMode::Tick()
 			if (Player->GetActorLocation() == Actor->GetActorLocation())
 			{
 				//Game Clear
-				exit(-1); //c
+				//exit(-1); //c lang
 				break;
 			}
 		}

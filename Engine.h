@@ -49,6 +49,8 @@ protected:
 
 	//Singleton
 	static FEngine* Instance;
+
+	class UTimer* Timer = nullptr;
 	
 };
 

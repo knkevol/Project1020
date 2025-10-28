@@ -14,6 +14,7 @@
 #include "Goal.h"
 #include "Floor.h"
 #include "GameMode.h"
+#include "Timer.h"
 
 
 #pragma comment(lib, "SDL3") //x64 SDL3.lib
@@ -22,12 +23,15 @@ FEngine* FEngine::Instance = nullptr;
 
 
 
-FEngine::FEngine()
+FEngine::FEngine() : World(nullptr)
 {
+	Timer = new UTimer();
 }
 
 FEngine::~FEngine()
 {
+	delete Timer;
+	delete World;
 }
 
 void FEngine::Init()
@@ -112,10 +116,12 @@ void FEngine::Run()
 {
 	while (bIsRunning)
 	{
+		//1frame Tick
 		SDL_PollEvent(&MyEvent); // event exist = input		
 		//Input();
 		Tick();
 		Render();
+		
 	}
 }
 
