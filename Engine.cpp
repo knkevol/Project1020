@@ -15,6 +15,9 @@
 #include "Floor.h"
 #include "GameMode.h"
 
+
+#pragma comment(lib, "SDL3") //x64 SDL3.lib
+
 FEngine* FEngine::Instance = nullptr;
 
 
@@ -30,6 +33,17 @@ FEngine::~FEngine()
 void FEngine::Init()
 {
 
+	SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO);
+
+	MyWindow = SDL_CreateWindow("GameEngine", 800, 600, SDL_WINDOW_OPENGL);
+	MyRenderer = SDL_CreateRenderer(MyWindow, nullptr);
+
+	OpenLevel();
+	
+}
+
+void FEngine::OpenLevel()
+{
 	srand((unsigned int)time(nullptr));
 
 	World = new UWorld;
@@ -73,16 +87,16 @@ void FEngine::Init()
 					World->SpawnActor(NewActor);
 				}
 				//else if (Line[X] == ' ')
-				
+
 				AActor* NewActor = new AFloor();
 				NewActor->SetActorLocation(FVector2D(X, Y));
 				NewActor->SetShape(' ');
 				World->SpawnActor(NewActor);
-				
+
 			}
 			Y++;
 		}
-		
+
 		//vector<AActor*> ActorsList = World->GetAllActors();
 		//sort(ActorsList.begin(), ActorsList.end(), [](const AActor* A, const AActor* B)
 		//	{ return A->GetZOrder() < B->GetZOrder(); });
@@ -98,7 +112,8 @@ void FEngine::Run()
 {
 	while (bIsRunning)
 	{
-		Input();
+		SDL_PollEvent(&MyEvent); // event exist = input		
+		//Input();
 		Tick();
 		Render();
 	}
@@ -107,6 +122,10 @@ void FEngine::Run()
 void FEngine::Term()
 {
 	bIsRunning = false;
+
+	SDL_DestroyRenderer(MyRenderer);
+	SDL_DestroyWindow(MyWindow);
+	SDL_Quit();
 }
 
 void FEngine::Input()
@@ -116,6 +135,7 @@ void FEngine::Input()
 
 void FEngine::Tick()
 {
+	
 	GetWorld()->Tick();
 }
 

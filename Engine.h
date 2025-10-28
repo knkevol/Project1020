@@ -1,4 +1,6 @@
 #pragma once
+#include <SDL3/SDL.h>
+
 
 class UWorld;
 
@@ -16,6 +18,8 @@ public:
 	virtual void Run();
 	virtual void Term();
 
+	void OpenLevel();
+
 	__forceinline UWorld* GetWorld() const { return World; }
 	__forceinline int GetKeyCode() const { return KeyCode; }
 
@@ -28,6 +32,10 @@ public:
 		}
 		return Instance;
 	}
+
+	SDL_Window* MyWindow;
+	SDL_Renderer* MyRenderer;
+	SDL_Event MyEvent;
 
 protected:
 	void Input();
