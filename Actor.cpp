@@ -3,12 +3,8 @@
 #include <iostream>
 #include "Engine.h"
 
-AActor::AActor()
+AActor::AActor() : Location(0, 0)
 {
-	//cout << "AActor »ý¼ºÀÚ" << "\n";
-	//Shape = ' ';
-	Location = 0, 0;
-	//ZOrder = 0;
 }
 
 AActor::~AActor()

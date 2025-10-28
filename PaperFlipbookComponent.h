@@ -19,11 +19,12 @@ public:
 	}
 
 	__forceinline char GetZOrder() const { return ZOrder; }
-
-protected:
-	char Shape;
 	int ZOrder;
 
 	SDL_Color Color = { 255, 255, 255, 0 };
+
+protected:
+	char Shape;
+
 };
 

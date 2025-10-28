@@ -2,16 +2,25 @@
 #include "Engine.h"
 #include "World.h"
 #include "SDL3/SDL.h"
+#include "PaperFlipbookComponent.h"
 
 APlayer::APlayer()
 {
 	bIsCollision = true;
 	bIsOverlap = true;
+
+	UPaperFlipbookComponent* Paper = new UPaperFlipbookComponent();
+	Paper->SetShape('P');
+	Paper->SetOwner(this);
+	Paper->ZOrder = 1003;
+	Paper->Color = SDL_Color{ 255, 0, 0, 0 };
+	AddComponent(Paper);
 }
 
 APlayer::~APlayer()
 {
 	//cout << "APlayer ¼Ò¸êÀÚ" << "\n";
+	
 }
 
 void APlayer::Tick()

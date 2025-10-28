@@ -9,13 +9,11 @@ public:
 	UWorld();
 	virtual ~UWorld();
 
-	std::vector<AActor*> GetAllActors(std::vector<AActor*>& OutActors) const;
+	void GetAllActors(std::vector<AActor*>& OutActors) const;
 	AActor* SpawnActor(AActor* NewActor);
 
 	virtual void Tick();
 	virtual void Render();
-
-	virtual void SetSimulatePhysics();
 
 	void SortActor();
 

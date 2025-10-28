@@ -3,11 +3,18 @@
 #include "World.h"
 #include "Actor.h"
 #include <vector>
+#include "PaperFlipbookComponent.h"
 
 AMonster::AMonster()
 {
 	bIsCollision = true;
 	bIsCollision = true;
+	UPaperFlipbookComponent* Paper = new UPaperFlipbookComponent();
+	Paper->SetShape('M');
+	Paper->SetOwner(this);
+	Paper->ZOrder = 1001;
+	Paper->Color = SDL_Color{ 0, 0, 255, 0 };
+	AddComponent(Paper);
 }
 
 AMonster::~AMonster()

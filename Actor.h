@@ -32,12 +32,11 @@ public:
 	virtual void Hit();
 
 	void AddComponent(UComponent* InComponent);
+	vector<class UComponent*> Components;
 
 protected:
 	FVector2D Location;
 	
-
-	vector<class UComponent*> Components;
 public:
 	bool bIsCollision = false;
 	bool bIsOverlap = true;
