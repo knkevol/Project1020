@@ -9,7 +9,7 @@ AWall::AWall()
 	UPaperFlipbookComponent* Paper = new UPaperFlipbookComponent();
 	Paper->SetShape('*');
 	Paper->SetOwner(this);
-	Paper->ZOrder = 100;
+	Paper->ZOrder = 1;
 	Paper->Color = SDL_Color{ 128, 128, 128, 0 };
 	AddComponent(Paper);
 }

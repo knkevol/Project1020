@@ -1,20 +1,21 @@
-#pragma once
+ï»¿#pragma once
 
 class AActor;
 
-class Interface
+class IInterface
 {
-
+public:
+	virtual void Tick() = 0;
 };
 
-//Ãß»óÅ¬·¡½º
+//ì¶”ìƒí´ëž˜ìŠ¤
 class UComponent
 {
 public:
 	UComponent();
 	virtual ~UComponent();
 
-	virtual void Tick() = 0; //¼ø¼ö°¡»óÇÔ¼ö->interface
+	virtual void Tick() = 0; //ìˆœìˆ˜ê°€ìƒí•¨ìˆ˜->interface
 
 	AActor* GetOwner() const;
 	void SetOwner(AActor* InOwner);

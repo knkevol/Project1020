@@ -8,7 +8,7 @@ public:
 
 	virtual void Tick() override;
 
-	float ExecuteTime = 0.5f;
+	float ExecuteTime = 0.2f;
 	float TotalTime = 0.f;
 };
 

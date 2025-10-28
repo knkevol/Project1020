@@ -12,8 +12,8 @@ APlayer::APlayer()
 	UPaperFlipbookComponent* Paper = new UPaperFlipbookComponent();
 	Paper->SetShape('P');
 	Paper->SetOwner(this);
-	Paper->ZOrder = 1003;
-	Paper->Color = SDL_Color{ 255, 0, 0, 0 };
+	Paper->ZOrder = 3;
+	Paper->Color = SDL_Color{ 255, 0, 0, 255 };
 	AddComponent(Paper);
 }
 
@@ -58,7 +58,7 @@ void APlayer::Tick()
 	bool bFlag = false;
 	for (auto OtherActor : AllActors)
 	{
-		if (CheckCollision(OtherActor) && this != OtherActor)
+		if (CheckCollision(OtherActor))
 		{
 			bFlag = true;
 			break;

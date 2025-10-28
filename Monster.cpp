@@ -8,11 +8,11 @@
 AMonster::AMonster()
 {
 	bIsCollision = true;
-	bIsCollision = true;
+	bIsOverlap = true;
 	UPaperFlipbookComponent* Paper = new UPaperFlipbookComponent();
 	Paper->SetShape('M');
 	Paper->SetOwner(this);
-	Paper->ZOrder = 1001;
+	Paper->ZOrder = 2;
 	Paper->Color = SDL_Color{ 0, 0, 255, 0 };
 	AddComponent(Paper);
 }

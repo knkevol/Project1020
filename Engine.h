@@ -2,6 +2,8 @@
 #include <SDL3/SDL.h>
 #include "Input.h"
 
+#pragma comment(lib, "SDL3")
+
 class UWorld;
 
 using namespace std;
@@ -20,10 +22,29 @@ public:
 
 	void OpenLevel();
 
-	__forceinline UWorld* GetWorld() const { return World; }
-	__forceinline int GetKeyCode() const { return UInput::KeyCode; }
+	__forceinline UWorld* GetWorld() const
+	{
+		return World;
+	}
 
-	//Singleton
+	__forceinline int GetKeyCode() const
+	{
+		return UInput::KeyCode;
+	}
+
+protected:
+	void Input();
+	void Tick();
+	void Render();
+
+	class UWorld* World;
+
+	bool bIsRunning = true;
+
+	//int KeyCode = 0;
+
+
+public:
 	static FEngine* GetInstance()
 	{
 		if (Instance == nullptr)
@@ -33,28 +54,20 @@ public:
 		return Instance;
 	}
 
-	SDL_Window* MyWindow;
-	SDL_Renderer* MyRenderer;
-	SDL_Event MyEvent;
-
 	double GetWorldDeltaSeconds() const;
 
+
+	SDL_Window* MyWindow = nullptr;
+	SDL_Renderer* MyRenderer = nullptr;
+	SDL_Event MyEvent = SDL_Event();
+
 protected:
-	void Input();
-	void Tick(); // =Process
-	void Render();
-
-	class UWorld* World;
-
-	bool bIsRunning = true;
-	//int KeyCode = 0;
-
-	//Singleton
 	static FEngine* Instance;
 
 	class UTimer* Timer = nullptr;
 	class UInput* InputDevice = nullptr;
-	
 };
 
-#define GEngine	FEngine::GetInstance()
+//extern FEngine* GEngine;
+
+#define GEngine		FEngine::GetInstance()

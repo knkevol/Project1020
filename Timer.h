@@ -14,5 +14,5 @@ public:
 	SDL_Time CurrentTime;
 	SDL_Time LastTime;
 
-	double DeltaSeconds;
+	float DeltaSeconds;
 };

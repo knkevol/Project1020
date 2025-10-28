@@ -16,7 +16,7 @@ void UWorld::GetAllActors(std::vector<AActor*>& OutActors) const
 {
 	OutActors = Actors;
 }
-//팩토리 패턴(생성도 이함수가 함)
+
 AActor* UWorld::SpawnActor(AActor* NewActor)
 {
 	Actors.push_back(NewActor);
@@ -29,7 +29,6 @@ void UWorld::Tick()
 	//All Actors Process.
 	for (auto Actor : Actors)
 	{
-		//runtime시에 결정됨. 문제는 이놈이 문제.
 		Actor->Tick();
 	}
 }
@@ -49,42 +48,41 @@ void UWorld::Render()
 	}
 }
 
+bool CompareActor(const AActor* A, const AActor* B)
+{
+	UPaperFlipbookComponent* Scene1 = nullptr;
+	for (auto Component : A->Components)
+	{
+		Scene1 = dynamic_cast<UPaperFlipbookComponent*>(Component);
+		if (Scene1)
+		{
+			break;
+		}
+	}
 
+	UPaperFlipbookComponent* Scene2 = nullptr;
+	for (auto Component : B->Components)
+	{
+		Scene2 = dynamic_cast<UPaperFlipbookComponent*>(Component);
+		if (Scene2)
+		{
+			break;
+		}
+	}
+
+	if (!Scene1 || !Scene2)
+	{
+		return false;
+	}
+
+	return (Scene1->GetZOrder() < Scene2->GetZOrder());
+}
 
 //[][][][][]
 void UWorld::SortActor()
 {
-	std::sort(Actors.begin(), Actors.end(), [](const AActor* A, const AActor* B) {
-		UPaperFlipbookComponent* Scene1 = nullptr;
-		for (auto Component : A->Components)
-		{
-			Scene1 = dynamic_cast<UPaperFlipbookComponent*>(Component);
-			if (Scene1)
-			{
-				break;
-			}
-		}
-		UPaperFlipbookComponent* Scene2 = nullptr;
-		for (auto Component : B->Components)
-		{
-			Scene2 = dynamic_cast<UPaperFlipbookComponent*>(Component);
-			if (Scene2)
-			{
-				break;
-			}
-		}
-
-		if (!Scene1 || !Scene2)
-		{
-			return false;
-		}
-
-		return (Scene1->GetZOrder() < Scene2->GetZOrder());
-		});
-
 	for (int j = 0; j < Actors.size(); ++j)
 	{
-		//선택한 액터
 		UPaperFlipbookComponent* Scene1 = nullptr;
 		for (auto Component : Actors[j]->Components)
 		{
@@ -127,3 +125,4 @@ void UWorld::SortActor()
 		}
 	}
 }
+

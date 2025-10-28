@@ -18,8 +18,6 @@
 #include "Input.h"
 
 
-#pragma comment(lib, "SDL3") //x64 SDL3.lib
-
 FEngine* FEngine::Instance = nullptr;
 
 
@@ -68,7 +66,7 @@ void FEngine::OpenLevel()
 {
 	srand((unsigned int)time(nullptr));
 
-	World = new UWorld;
+	World = new UWorld();
 
 	ifstream MapFile("Level101.map");
 	if (MapFile.is_open())

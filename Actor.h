@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Vector.h"
-#include "SDL3/SDL.h"
 #include <vector>
 using namespace std;
 
@@ -26,7 +25,7 @@ public:
 	
 
 	//Implement same as UE
-	virtual bool CheckCollision(const AActor* Other);
+	bool CheckCollision(const AActor* Other);
 	//virtual void SetSimulatePhysics();
 	virtual void ActorBeginOverlap();
 	virtual void Hit();

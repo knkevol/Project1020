@@ -21,7 +21,7 @@ public:
 	__forceinline char GetZOrder() const { return ZOrder; }
 	int ZOrder;
 
-	SDL_Color Color = { 255, 255, 255, 0 };
+	SDL_Color Color = { 255, 255, 255, 255 };
 
 protected:
 	char Shape;
