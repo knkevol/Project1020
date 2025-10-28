@@ -1,6 +1,6 @@
 #pragma once
 #include <SDL3/SDL.h>
-
+#include "Input.h"
 
 class UWorld;
 
@@ -21,7 +21,7 @@ public:
 	void OpenLevel();
 
 	__forceinline UWorld* GetWorld() const { return World; }
-	__forceinline int GetKeyCode() const { return KeyCode; }
+	__forceinline int GetKeyCode() const { return UInput::KeyCode; }
 
 	//Singleton
 	static FEngine* GetInstance()
@@ -37,6 +37,8 @@ public:
 	SDL_Renderer* MyRenderer;
 	SDL_Event MyEvent;
 
+	double GetWorldDeltaSeconds() const;
+
 protected:
 	void Input();
 	void Tick(); // =Process
@@ -45,12 +47,13 @@ protected:
 	class UWorld* World;
 
 	bool bIsRunning = true;
-	int KeyCode = 0;
+	//int KeyCode = 0;
 
 	//Singleton
 	static FEngine* Instance;
 
 	class UTimer* Timer = nullptr;
+	class UInput* InputDevice = nullptr;
 	
 };
 

@@ -1,6 +1,7 @@
 #include "Player.h"
 #include "Engine.h"
 #include "World.h"
+#include "SDL3/SDL.h"
 
 APlayer::APlayer()
 {
@@ -21,22 +22,29 @@ void APlayer::Tick()
 	int KeyCode = GEngine->GetKeyCode();
 	FVector2D SaveLocation(Location); //PreLocation
 
-	if (KeyCode == 'w')
+	if (KeyCode == SDLK_w)
 	{
 		Location.Y--;
 	}
-	else if (KeyCode == 'a')
+	else if (KeyCode == SDLK_a)
 	{
 		Location.X--;
 	}
-	else if (KeyCode == 's')
+	else if (KeyCode == SDLK_S)
 	{
 		Location.Y++;
 	}
-	else if (KeyCode == 'd')
+	else if (KeyCode == SDLK_d)
 	{
 		Location.X++;
 	}
+
+	if (KeyCode == SDLK_ESCAPE)
+	{
+		exit(-1);
+	}
+
+
 	vector<AActor*> AllActors;
 	GEngine->GetWorld()->GetAllActors(AllActors);
 
