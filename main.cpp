@@ -21,7 +21,7 @@ int SDL_main(int argc, char* argv[])
 	GEngine->Run();
 	GEngine->Term();
 
-	delete GEngine;
+	//delete GEngine;
 	
 	return 0;
 }

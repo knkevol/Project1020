@@ -9,6 +9,7 @@ AMonster::AMonster()
 	ZOrder = 2;
 	bIsCollision = true;
 	bIsCollision = true;
+	Color = { 0, 0, 255, 0 };
 }
 
 AMonster::~AMonster()
@@ -17,35 +18,40 @@ AMonster::~AMonster()
 
 void AMonster::Tick()
 {
-	int MonsterPosition = rand() % 4;
-	FVector2D SaveLocation(Location); //PreLocation
-	
+	int KeyCode = rand() % 4;
 
-	switch (MonsterPosition)
+	FVector2D SaveLocation;
+	SaveLocation = Location;
+
+	if (KeyCode == 0)
 	{
-	case 0:
-		Location.Y++;
-	case 1:
-		Location.X++;
-	case 2:
 		Location.Y--;
-	case 3:
+	}
+	if (KeyCode == 1)
+	{
+		Location.Y++;
+	}
+	if (KeyCode == 2)
+	{
 		Location.X--;
 	}
-
-	vector<AActor*> AllActors;
+	if (KeyCode == 3)
+	{
+		Location.X++;
+	}
+	std::vector<AActor*> AllActors;
 	GEngine->GetWorld()->GetAllActors(AllActors);
 
 	bool bFlag = false;
+
 	for (auto OtherActor : AllActors)
 	{
-		if (CheckCollision(OtherActor) && this != OtherActor)
+		if (CheckCollision(OtherActor))
 		{
 			bFlag = true;
 			break;
 		}
 	}
-
 
 	if (bFlag)
 	{

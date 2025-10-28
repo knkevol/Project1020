@@ -7,6 +7,7 @@ APlayer::APlayer()
 	ZOrder = 3;
 	bIsCollision = true;
 	bIsOverlap = true;
+	Color = { 255, 0, 0, 0 };
 }
 
 APlayer::~APlayer()

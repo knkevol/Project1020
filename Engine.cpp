@@ -141,5 +141,11 @@ void FEngine::Tick()
 
 void FEngine::Render()
 {
+	// screen clear
+	SDL_SetRenderDrawColor(MyRenderer, 255, 255, 255, 0);
+	SDL_RenderClear(MyRenderer);
+
 	GetWorld()->Render();
+
+	SDL_RenderPresent(MyRenderer);
 }

@@ -1,8 +1,7 @@
 #pragma once
 
 #include "Vector.h"
-
-#include <iostream>
+#include "SDL3/SDL.h"
 using namespace std;
 
 class AActor
@@ -43,4 +42,6 @@ protected:
 public:
 	bool bIsCollision = false;
 	bool bIsOverlap = true;
+
+	SDL_Color Color = { 255, 255, 255, 0 };
 };
