@@ -37,7 +37,7 @@ void UWorld::Render()
 {
 	for (auto Actor : Actors)
 	{
-		Actor->Render();
+		//Actor->Render();
 	}
 }
 
@@ -47,7 +47,7 @@ void UWorld::SetSimulatePhysics()
 
 void UWorld::SortActor()
 {
-	for (int j = 0; j < Actors.size(); ++j)
+	/*for (int j = 0; j < Actors.size(); ++j)
 	{
 		for (int i = 0; i < Actors.size(); ++i)
 		{
@@ -58,5 +58,5 @@ void UWorld::SortActor()
 				Actors[i] = Temp;
 			}
 		}
-	}
+	}*/
 }

@@ -84,44 +84,40 @@ void FEngine::OpenLevel()
 				{
 					AActor* NewActor = new AWall();
 					NewActor->SetActorLocation(FVector2D(X, Y));
-					NewActor->SetShape(Line[X]);
+					//NewActor->SetShape(Line[X]);
 					World->SpawnActor(NewActor);
 				}
 				else if (Line[X] == 'P')
 				{
 					AActor* NewActor = new APlayer();
 					NewActor->SetActorLocation(FVector2D(X, Y));
-					NewActor->SetShape(Line[X]);
+					//NewActor->SetShape(Line[X]);
 					World->SpawnActor(NewActor);
 				}
 				else if (Line[X] == 'M')
 				{
 					AActor* NewActor = new AMonster();
 					NewActor->SetActorLocation(FVector2D(X, Y));
-					NewActor->SetShape(Line[X]);
+					//NewActor->SetShape(Line[X]);
 					World->SpawnActor(NewActor);
 				}
 				else if (Line[X] == 'G')
 				{
 					AActor* NewActor = new AGoal();
 					NewActor->SetActorLocation(FVector2D(X, Y));
-					NewActor->SetShape(Line[X]);
+					//NewActor->SetShape(Line[X]);
 					World->SpawnActor(NewActor);
 				}
 				//else if (Line[X] == ' ')
 
 				AActor* NewActor = new AFloor();
 				NewActor->SetActorLocation(FVector2D(X, Y));
-				NewActor->SetShape(' ');
+				//NewActor->SetShape(' ');
 				World->SpawnActor(NewActor);
 
 			}
 			Y++;
 		}
-
-		//vector<AActor*> ActorsList = World->GetAllActors();
-		//sort(ActorsList.begin(), ActorsList.end(), [](const AActor* A, const AActor* B)
-		//	{ return A->GetZOrder() < B->GetZOrder(); });
 	}
 	MapFile.close();
 	World->SortActor();
@@ -136,7 +132,15 @@ void FEngine::Run()
 	{
 		Timer->Tick();
 		//1frame Tick
-		SDL_PollEvent(&MyEvent); // event exist = input		
+		if (SDL_PollEvent(&MyEvent))// event exist = input		
+		{
+			switch (MyEvent.type)
+			{
+			case SDL_QUIT:
+				bIsRunning = false;
+				break;
+			}
+		} 
 		Input();
 		Tick();
 		Render();
@@ -146,7 +150,6 @@ void FEngine::Run()
 
 void FEngine::Term()
 {
-	bIsRunning = false;
 
 	SDL_DestroyRenderer(MyRenderer);
 	SDL_DestroyWindow(MyWindow);

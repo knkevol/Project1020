@@ -6,7 +6,7 @@
 AActor::AActor()
 {
 	//cout << "AActor »ý¼ºÀÚ" << "\n";
-	Shape = ' ';
+	//Shape = ' ';
 	Location = 0, 0;
 	//ZOrder = 0;
 }
@@ -21,23 +21,10 @@ void AActor::Tick()
 	//cout << "AActor Tick" << "\n";
 }
 
-void AActor::Render()
-{
-	COORD Position;
-
-	Position.X = Location.X;
-	Position.Y = Location.Y;
-
-	SetConsoleCursorPosition((HANDLE)GetStdHandle(STD_OUTPUT_HANDLE), Position);
-	cout << Shape;
-
-	SDL_SetRenderDrawColor(GEngine->MyRenderer, Color.r, Color.g, Color.b, Color.a);
-	int SizeX = 30;
-	int SizeY = 30;
-	//SDL_RenderDrawPoint(GEngine->MyRenderer, (float)Location.X, (float)Location.Y);
-	SDL_FRect DrawRact = {Location.X * SizeX, Location.Y * SizeY, SizeX, SizeY};
-	SDL_RenderFillRect(GEngine->MyRenderer, &DrawRact);
-}
+//void AActor::Render()
+//{
+//	
+//}
 
 bool AActor::CheckCollision(const AActor* Other)
 {
@@ -61,4 +48,9 @@ void AActor::ActorBeginOverlap()
 
 void AActor::Hit()
 {
+}
+
+void AActor::AddComponent(UComponent* InComponent)
+{
+	Components.push_back(InComponent);
 }

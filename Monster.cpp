@@ -6,10 +6,8 @@
 
 AMonster::AMonster()
 {
-	ZOrder = 2;
 	bIsCollision = true;
 	bIsCollision = true;
-	Color = { 0, 0, 255, 0 };
 }
 
 AMonster::~AMonster()
@@ -18,6 +16,14 @@ AMonster::~AMonster()
 
 void AMonster::Tick()
 {
+	TotalTime += (float)GEngine->GetWorldDeltaSeconds();
+
+	if (TotalTime < ExecuteTime)
+	{
+		return;
+	}
+	TotalTime = 0.f;
+
 	int KeyCode = rand() % 4;
 
 	FVector2D SaveLocation;
