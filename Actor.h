@@ -29,7 +29,21 @@ public:
 	virtual void Hit();
 
 	void SetupAttachment(UComponent* InComponent);
+	
 	vector<class UComponent*> Components;
+	template<typename T>
+	T* GetComponent()
+	{
+		for (auto Component : Components)
+		{
+			if (dynamic_cast<T*>(Component))
+			{
+				return dynamic_cast<T*>(Component);
+			}
+		}
+
+		return nullptr;
+	}
 
 protected:
 	FVector2D Location;
