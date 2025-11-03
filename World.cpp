@@ -2,6 +2,7 @@
 #include "Actor.h"
 #include "SceneComponent.h"
 #include "PaperFlipbookComponent.h"
+#include "ActorComponent.h"
 #include <algorithm>
 
 UWorld::UWorld()
@@ -30,6 +31,10 @@ void UWorld::Tick()
 	for (auto Actor : Actors)
 	{
 		Actor->Tick();
+		for (auto Component : Actor->Components)
+		{
+			Component->Tick();
+		}
 	}
 }
 

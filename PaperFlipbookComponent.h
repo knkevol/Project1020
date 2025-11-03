@@ -27,6 +27,16 @@ public:
 	SDL_Color Color = { 255, 255, 255, 255 };
 	SDL_Surface* BitmapImage = nullptr; // In Memory(CPU) int
 	SDL_Texture* Texture = nullptr; // In GPU float
+	SDL_Color ColorKey = { 255, 0, 255, 255 };
+	bool bAnimation = false;
+
+	float SpriteCountX = 5;
+	float SpriteCountY = 5;
+	float XIndex = 0;
+	float YIndex = 0;
+
+	float ExecuteTime = 0.2f;
+	float TotalTime = 0.f;
 
 protected:
 	char Shape = ' ';

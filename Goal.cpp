@@ -3,12 +3,12 @@
 
 AGoal::AGoal()
 {
-	UPaperFlipbookComponent* Paper = new UPaperFlipbookComponent();
-	Paper->SetShape('G');
-	Paper->SetOwner(this);
-	Paper->ZOrder = 1;
-	Paper->Color = SDL_Color{ 255, 255, 0, 0 };
-	SetupAttachment(Paper);
+	Flipbook = new UPaperFlipbookComponent();
+	Flipbook->SetShape('G');
+	Flipbook->SetOwner(this);
+	Flipbook->ZOrder = 1;
+	Flipbook->Color = SDL_Color{ 255, 255, 0, 0 };
+	SetupAttachment(Flipbook);
 }
 
 AGoal::~AGoal()

@@ -33,21 +33,30 @@ void APlayer::Tick()
 	int KeyCode = GEngine->GetKeyCode();
 	FVector2D SaveLocation(Location); //PreLocation
 
+	
 	if (KeyCode == SDLK_w)
 	{
 		Location.Y--;
+		Flipbook->YIndex = 2;
+		Flipbook->XIndex++;
 	}
 	else if (KeyCode == SDLK_a)
 	{
 		Location.X--;
+		Flipbook->YIndex = 0;
+		Flipbook->XIndex++;
 	}
 	else if (KeyCode == SDLK_S)
 	{
 		Location.Y++;
+		Flipbook->YIndex = 3;
+		Flipbook->XIndex++;
 	}
 	else if (KeyCode == SDLK_d)
 	{
 		Location.X++;
+		Flipbook->YIndex = 1;
+		Flipbook->XIndex++;
 	}
 
 	if (KeyCode == SDLK_ESCAPE)
