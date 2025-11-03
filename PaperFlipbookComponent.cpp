@@ -43,11 +43,7 @@ void UPaperFlipbookComponent::Tick()
 		XIndex++;
 		XIndex = (float)(((int)XIndex) % (int)SpriteCountX);
 
-		SDL_Log("Index X : %f", XIndex);
-	}
-	else
-	{
-		XIndex = 0.f;
+		//SDL_Log("Index X : %f", XIndex);
 	}
 }
 

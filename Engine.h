@@ -1,5 +1,6 @@
 #pragma once
 #include <SDL3/SDL.h>
+#include <string>
 #include "Input.h"
 
 #pragma comment(lib, "SDL3")
@@ -20,7 +21,7 @@ public:
 	virtual void Run();
 	virtual void Term();
 
-	void OpenLevel();
+	void OpenLevel(std::string LevelName);
 
 	__forceinline UWorld* GetWorld() const
 	{
