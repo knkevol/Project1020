@@ -39,15 +39,15 @@ void UPaperFlipbookComponent::Tick()
 
 	if (bAnimation)
 	{
+
+		XIndex++;
 		XIndex = (float)(((int)XIndex) % (int)SpriteCountX);
-		YIndex = (float)(((int)YIndex) % (int)SpriteCountY);
 
 		SDL_Log("Index X : %f", XIndex);
 	}
 	else
 	{
 		XIndex = 0.f;
-		YIndex = 0.f;
 	}
 }
 
@@ -60,8 +60,7 @@ void UPaperFlipbookComponent::Render()
 	//Position.Y = GetOwner()->GetActorLocation().Y;
 	//SetConsoleCursorPosition((HANDLE)GetStdHandle(STD_OUTPUT_HANDLE), Position);
 	//cout << Shape;
-	int SizeX = 30;
-	int SizeY = 30;
+	
 	if (!BitmapImage && !Texture)
 	{
 		SDL_SetRenderDrawColor(GEngine->MyRenderer, Color.r,

@@ -34,6 +34,8 @@ public:
 	float SpriteCountY = 5;
 	float XIndex = 0;
 	float YIndex = 0;
+	int SizeX = 60;
+	int SizeY = 60;
 
 	float ExecuteTime = 0.2f;
 	float TotalTime = 0.f;
